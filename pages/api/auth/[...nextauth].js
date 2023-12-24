@@ -6,11 +6,11 @@ import clientPromise from "@/lib/mongodb";
 const adminEmails = ['shamshodnurmurodov119@gmail.com'];
 
 export const authOptions = {
-  secret: "kFNIzOsuWgb3TG3tgCaIOnN1xhsHRuSkzzrAkf99mok=",
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     GoogleProvider({
-      clientId:"27309396415-1jur006qhknjvllaqu0u9v2tldduv5kb.apps.googleusercontent.com",
-      clientSecret: "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"
+      clientId:process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET
     }),
   ],
   adapter: MongoDBAdapter(clientPromise),
