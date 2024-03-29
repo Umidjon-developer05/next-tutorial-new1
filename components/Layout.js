@@ -2,7 +2,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import Nav from "@/components/Nav";
 import {useState} from "react";
 import Logo from "@/components/Logo";
-
+import { SessionProvider } from "next-auth/react"; 
 export default function Layout({children}) {
   const [showNav,setShowNav] = useState(false);
   const { data: session } = useSession();
@@ -31,7 +31,9 @@ export default function Layout({children}) {
       <div className="flex">
         <Nav show={showNav} />
         <div className="flex-grow p-4">
+    <SessionProvider>
           {children}
+    </SessionProvider>
         </div>
       </div>
     </div>
